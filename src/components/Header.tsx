@@ -11,7 +11,7 @@ export const Header = () => {
         const [isSmallSearchBar, setSmallSearchBar] = useState<boolean>(false)
     return (
         <>
-        <div className={`flex p-4 ml-2 w-full justify-between overflow-x-auto`}>
+        <div className={`flex gap-10 lg:gap-20 mb-6 mx-4 pt-2 justify-between`}>
             <div className={`gap-4 flex-shrink-0 ${isSmallSearchBar ? "hidden" : "flex"}`}>
                 <Button variant="ghost" size="icon">
                     <RxHamburgerMenu className={`w-6 h-10 cursor-pointer`}/>

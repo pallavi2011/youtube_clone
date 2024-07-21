@@ -1,34 +1,53 @@
 import { FaCheckCircle } from "react-icons/fa";
 
-export const  VideoCard= () =>{
+type VideoCardProps = {
+    id: string
+    title: string
+    channel: {
+      id: string
+      name: string
+      profileUrl: string
+    }
+    views: number
+    postedAt: Date
+    duration: number
+    thumbnailUrl: string
+    videoUrl: string
+  }
+
+export function  VideoCard({ id,
+    title,
+    channel,
+    views,
+    postedAt,
+    duration,
+    thumbnailUrl,
+    videoUrl,
+  }: VideoCardProps){
     return(
-        <div className="flex flex-col"> 
-            <img src="/yt_1.jpg" alt="thumbnail_img" className="w-full rounded-xl"/>
-            <div className="flex flex-row w-full">
-                
-                    <img src="/yt_1.jpg" className="w-10 h-10 ml-1 mt-2 rounded-full sm:rounded-full md:rounded-full"/>
-                
-                <div className="w-[3/4] pl-2 pt-2 pr-2">
-                    <h4>Build an app that can highlight your resume</h4>
-                    <div className="flex flex-col">
-                        <div className="flex flex-row">
-                            <span className="pr-3">Geetha arts</span>
-                            <FaCheckCircle size={20}/>
-                        </div>
-                <div className="flex flex-row">
-                    <span>67M views  .  5 years ago</span>
-
+        <div className="flex flex-col gap-2"> 
+             <a href="#" className="relative aspect-video">
+             <img src={thumbnailUrl} alt="thumbnail_img" className="w-full h-full object-cover rounded-xl transition-[border-radius]  duration-300 hover:rounded-none"/>
+             <div className="absolute right-1 bottom-1 bg-black-200 text-white-200 text-sm px-1 rounded"></div>
+             </a>
+             <div className="flex gap-2">
+                <a href={`/@${channel.id}`} className="flex-shrink-0">
+                <img className="w-12 h-12 rounded-full" src={channel.profileUrl} />
+                </a>
+                <div className="flex flex-col">
+                <a href={`/watch?v=${id}`} className="font-bold">
+                    {title}
+                </a>
+                <a href={`/@${channel.id}`} className="text-secondary-text text-sm">
+                    {channel.name}
+                </a>
+                <div className="text-secondary-text text-sm">
+                Views • 22M
                 </div>
-                
-
-
-            </div>
                 </div>
-                
-            </div>
+      </div>
             
-
-            
+     
         </div>
     )
 }
